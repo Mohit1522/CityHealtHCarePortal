@@ -1,0 +1,202 @@
+.cardsColor1 {
+    background: rgb(246, 237, 212);
+}
+
+.cardsColor2 {
+    background: rgb(229, 222, 251);
+}
+
+.cardsColor3 {
+    background: rgb(214, 227, 240);
+}
+
+.cardsColor4 {
+    background: rgb(223, 223, 223);
+}
+
+.cardsColor5 {
+    background: rgb(255, 230, 252);
+}
+
+
+
+
+@media (min-width: 200px) and (max-width: 575px) {
+    .personImages {
+        height: 10rem;
+    }
+
+    .cards {
+        height: 10rem;
+    }
+
+    .names {
+        font-size: 1.25rem;
+        font-weight: 500;
+        letter-spacing: 2px;
+        margin-top: 0rem;
+    }
+
+    .locations {
+        font-weight: 500;
+        font-size: 0.75rem;
+    }
+
+    .emailIDs {
+        font-weight: 500;
+        font-weight: 100;
+        margin-top: 1rem;
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+
+    .description {
+        margin-top: 1.5rem;
+        background: white;
+        border-radius: 1.25rem;
+        padding: 0.25rem;
+
+        display: flex;
+        justify-content: center;
+    }
+
+    .description i {
+        font-size: .9rem;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .personImages {
+        height: 12rem;
+    }
+
+    .cards {
+        height: 12rem;
+    }
+
+    .names {
+        font-size: 1.75rem;
+        /* font-weight: 500; */
+        letter-spacing: 1px;
+        margin-top: 0rem;
+    }
+
+    .locations {
+        font-weight: 500;
+        font-size: 1rem;
+    }
+
+    .emailIDs {
+        font-weight: 500;
+        font-weight: 100;
+        margin-top: 1rem;
+        font-size: 1.25rem;
+        letter-spacing: 0.5px;
+    }
+
+    .description {
+        margin-top: 1.5rem;
+        background: white;
+        border-radius: 1.25rem;
+        padding: 0.25rem;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .personImages {
+        height: 15rem;
+    }
+
+    .cards {
+        height: 15rem;
+    }
+
+    .names {
+        font-weight: 500;
+        letter-spacing: 2px;
+        margin-top: 1rem;
+    }
+
+    .locations {
+        font-weight: 500;
+    }
+
+    .emailIDs {
+        font-weight: 500;
+        font-weight: 100;
+        margin-top: 1rem;
+        letter-spacing: 1px;
+    }
+
+    .description {
+
+        margin-top: 1.5rem;
+        background: white;
+        border-radius: 2rem;
+        padding: 0.5rem;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+@media (min-width: 993px) and (max-width: 1200px) {
+    .personImages {
+        height: 20rem;
+    }
+
+    .cards {
+        height: 20rem;
+    }
+}
+
+@media (min-width: 1201px) and (max-width: 1399px) {
+    .personImages {
+        height: 22rem;
+    }
+
+    .cards {
+        height: 22rem;
+    }
+
+    .names {
+        font-weight: 500;
+        letter-spacing: 2px;
+        margin-top: 1rem;
+    }
+
+    .locations {
+        font-weight: 500;
+    }
+
+    .emailIDs {
+        font-weight: 500;
+        font-weight: 100;
+        margin-top: 4rem;
+        letter-spacing: 1px;
+    }
+
+    .description {
+
+        margin-top: 5em;
+        background: white;
+        border-radius: 2rem;
+        padding: 0.5rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .description i {
+
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .personImages {
+        height: 22rem;
+        width: 4.5rem;
+    }
+}

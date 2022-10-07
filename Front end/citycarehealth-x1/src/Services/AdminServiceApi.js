@@ -14,7 +14,9 @@ class AdminServiceApi {
   fetchAllUsers() {
     return axios.get(ADMIN_API_BASE_URL + "/allusers");
   }
-
+  fecthAllHospitals(){
+    return axios.get(ADMIN_API_BASE_URL+ "/allusers");
+  }
   logoutAdmin() {
     localStorage.removeItem("admin");
   }

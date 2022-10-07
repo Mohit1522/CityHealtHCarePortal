@@ -16,7 +16,7 @@ const ViewDoctorInfo = () => {
           doctors: resp.data,
           message: "Doctors list rendered successfully",
         });
-        console.log(this.state.message);
+        console.log(state.message);
       })
       .catch((error) => {
         console.log(state.message);

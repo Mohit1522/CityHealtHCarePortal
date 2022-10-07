@@ -33,6 +33,9 @@ import DoctorInfoComponent from "./Components/DoctorInfoComponent";
 import About from "./Components/About";
 import { Navigate } from "react-router-dom";
 import ErrorPageComponent from "./Components/ErrorPageComponent";
+import AdminAllHospitalBedComponent from "./Components/AdminAllHospitalBedComponent";
+import AdminAllHospitalBloodComponent from "./Components/AdminAllHospitalBloodComponent";
+import AdminAllHospitalOxygenComponent from "./Components/AdminAllHospitalOxygenComponent";
 
 function App() {
   return (
@@ -74,6 +77,30 @@ function App() {
                 element={
                   <ProtectedRouteAdmin>
                     <HeaderComponents /> <AddHospital /> <FooterComponents />
+                  </ProtectedRouteAdmin>
+                }
+              ></Route><Route
+                exact
+                path="/allhospitalbed"
+                element={
+                  <ProtectedRouteAdmin>
+                    <HeaderComponents /> <AdminAllHospitalBedComponent /> <FooterComponents />
+                  </ProtectedRouteAdmin>
+                }
+              ></Route><Route
+                exact
+                path="/allhospitalblood"
+                element={
+                  <ProtectedRouteAdmin>
+                    <HeaderComponents /> <AdminAllHospitalBloodComponent /> <FooterComponents />
+                  </ProtectedRouteAdmin>
+                }
+              ></Route><Route
+                exact
+                path="/allhospitaloxygen"
+                element={
+                  <ProtectedRouteAdmin>
+                    <HeaderComponents /> <AdminAllHospitalOxygenComponent /> <FooterComponents />
                   </ProtectedRouteAdmin>
                 }
               ></Route>
@@ -118,8 +145,7 @@ function App() {
                 path="/addbed"
                 element={
                   <ProtectedRouteHospital>
-                    {" "}
-                    <HeaderComponents /> <AddBedComponent />{" "} <FooterComponents />
+                    <HeaderComponents /> <AddBedComponent /> <FooterComponents />
                   </ProtectedRouteHospital>
                 }
               ></Route>

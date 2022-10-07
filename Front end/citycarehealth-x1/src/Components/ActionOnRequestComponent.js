@@ -11,7 +11,6 @@ const ActionOnRequestComponent = () => {
 
   useEffect(() => {
     const hosp = JSON.parse(localStorage.getItem("hospital"));
-    console.log(hosp);
     RequestServiceApi.getAllPendingRequestforHospital(hosp.id)
       .then((resp) => {
         setState({

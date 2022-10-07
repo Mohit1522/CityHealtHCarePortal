@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import AdminServiceApi from '../Services/AdminServiceApi';
 import HospitalServiceApi from '../Services/HospitalServiceApi';
 
 const OxygenAvailableComponent = () => {
@@ -9,6 +11,10 @@ const OxygenAvailableComponent = () => {
         oxygenavailable: "",
         message: null,
       });
+      const [state1,setState1] = useState({
+        hospitals: [],
+        message: null,
+    });
   
   const searchVl=useRef();
   const hospitalnameVr=useRef();
@@ -37,18 +43,17 @@ const OxygenAvailableComponent = () => {
         }
       );
     };
-  
-    const validateinput=()=> {
-      const hospname = hospitalnameVr.current.value;
-      if (hospname === "") {
-        searchVl.current.innerHTML =
-          "Please Enter Hospital Name";
-        return true;
-      }
-    }
-    const removeWarnings=()=> {
-      searchVl.current.innerHTML  = "";
-    }
+
+    useEffect(()=>{
+      AdminServiceApi.fetchAllHospitals().then((resp) => {
+          setState1({
+            hospitals: resp.data,
+            message: "Hospitals list rendered successfully",
+      });
+  }).catch(error=>{
+    console.log(error);
+      })
+   },[])
   
 
   return (
@@ -71,19 +76,20 @@ const OxygenAvailableComponent = () => {
                 Hospital Name
               </label>
               <div className="col-5">
-                <input
-                  type="text"
-                  id="hospitalname"
-                  className="form-control"
-                  placeholder="Hospital name"
-                  name="hospitalname"
-                  value={hospitalname}
-                  ref={hospitalnameVr}
-                  onChange={(e)=>setHospitalname(e.target.value)}
-                  onBlur={validateinput}
-                  onFocus={removeWarnings}
-                  required
-                />
+              <select
+              id="bedtype"
+              className="form-select"
+              name="hospitalname"
+              value={hospitalname}
+              onChange={(e)=>setHospitalname(e.target.value)}
+              required
+            >
+
+                <option value="">select the hospital</option>
+                {state1.hospitals.map((hospital) => (
+                      <option value={hospital.hospitalname}>{hospital.hospitalname}</option>
+                  ))}
+            </select>
                 <span style={{ color: "red" }} id="searchVl" ref={searchVl}></span>
               </div>
             </div>
@@ -112,6 +118,7 @@ const OxygenAvailableComponent = () => {
             </table>
           </form>
         </div>
+        <br /><br /><br /><br />
       </>
   )
 }

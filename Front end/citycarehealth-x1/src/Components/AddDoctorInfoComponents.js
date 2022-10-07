@@ -8,7 +8,7 @@ const AddDoctorInfoComponents = () => {
   const [email, setEmail] = useState("");
   const [qualification, setQualification] = useState("");
   const [specialization, SetSpecialization] = useState("");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("Doctor details added successfully.");
   const [i, setI] = useState(0);
   const navigate=useNavigate();
   const emailVr = useRef();

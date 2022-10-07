@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import AdminServiceApi from "../Services/AdminServiceApi";
 import HospitalServiceApi from "../Services/HospitalServiceApi";
 
 const UserBedAvblComponent = () => {
@@ -9,8 +11,12 @@ const UserBedAvblComponent = () => {
   const [ventilator, setVentilator] = useState(null);
   const [oxygen, setOxygen] = useState(null);
   const [normal, setNormal] = useState(null);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("Please select the Hospital Name");
   const [id, setId] = useState(0);
+  const [state,setState] = useState({
+    hospitals: [],
+    message1: null,
+});
   const navigate=useNavigate();
   const searchVl = useRef();
   const hospitalnameVr = useRef();
@@ -18,11 +24,11 @@ const UserBedAvblComponent = () => {
   const search = (e) => {
     if (hospitalname === "") {
       Swal.fire({
-        text: "Please Enter the Hospital Name",
+        text: "Please select the Hospital",
         icon: "warning",
         confirmButtonText: "Ok",
+
       });
-      return false;
     }
     e.preventDefault();
 
@@ -38,17 +44,8 @@ const UserBedAvblComponent = () => {
       localStorage.setItem("id", hospital.hospid);
     });
   };
-  const validateinput = () => {
-    const hospname = hospitalnameVr.current.value;
-    if (hospname === "") {
-      searchVl.current.innerHTML = "Please Enter Hospital Name";
-      return true;
-    }
-  };
-  const removeWarnings = () => {
-    searchVl.current.innerHTML = "";
-  };
 
+ 
   const gotobedbook = () => {
     if (ventilator === "") {
       Swal.fire({
@@ -61,6 +58,17 @@ const UserBedAvblComponent = () => {
     }
     navigate("/userbedbook");
   };
+
+  useEffect(()=>{
+    AdminServiceApi.fetchAllHospitals().then((resp) => {
+        setState({
+          hospitals: resp.data,
+          message: "Hospitals list rendered successfully",
+    });
+}).catch(error=>{
+     console.log(state.message1);
+    })
+ },[])
 
   return (
     <>
@@ -84,19 +92,17 @@ const UserBedAvblComponent = () => {
               Hospital Name
             </label>
             <div className="col-5">
-              <input
-                type="text"
-                id="hospitalname"
-                ref={hospitalnameVr}
-                className="form-control"
-                placeholder="Hospital name"
-                name="hospitalname"
-                value={hospitalname}
-                onChange={(e) => setHospitalname(e.target.value)}
-                onBlur={validateinput}
-                onFocus={removeWarnings}
-                required
-              />
+               <select
+              id="hospitalname"
+              className="form-select"
+              name="bedtype"
+              value={hospitalname}
+              onChange={(e) => setHospitalname(e.target.value)}
+            >   <option value="">select the hospital</option>
+                {state.hospitals.map((hospital) => (
+                      <option value={hospital.hospitalname}>{hospital.hospitalname}</option>
+                  ))}
+            </select>
               <span
                 style={{ color: "red" }}
                 id="searchVl"
@@ -141,7 +147,9 @@ const UserBedAvblComponent = () => {
           </tbody>
         </table>
       </div>
+      <br /><br /><br /><br />
     </>
+    
   );
 };
 

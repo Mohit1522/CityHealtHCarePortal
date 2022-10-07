@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-  BrowserRouter as Router,
-  Navigate,
-  Route,
-  Routes,
   useNavigate,
 } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -15,7 +11,7 @@ const UserBedBookComponent = () => {
   const [symptoms, setSymptoms] = useState("");
   const [timetoarrive, setTimetoarrive] = useState(null);
   const [status, setStatus] = useState("pending");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("Request send successfully.");
   const [i, setI] = useState(0);
   const [j, setJ] = useState(0);
   const navigate=useNavigate();

@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom'
 import AdminServiceApi from '../Services/AdminServiceApi';
-import { Link } from 'react-router-dom';
-import Loading from '../Components/Loading'
+import Loading from './Loading'
 
-const ViewHospitals = () => {
-
+const AdminAllHospitalBedComponent = () => {
     const [state,setState] = useState({
         hospitals: [],
         message: null,
     });
 
-
-      
     useEffect(()=>{
         AdminServiceApi.fetchAllHospitals().then((resp) => {
             setState({
@@ -22,9 +21,8 @@ const ViewHospitals = () => {
          console.log(state.message);
         })
      },[])
-  
   return (
-     <>
+    <>
         <div className="container my-4">
         <Link to='/admindashboard'>
           <button
@@ -43,10 +41,9 @@ const ViewHospitals = () => {
                   <tr>
                     <th className="visually-hidden">Id</th>
                     <th>HospitalName</th>
-                    <th>Address</th>
-                    <th>Email</th>
-                    <th>Contact</th>
-                    <th>AmbulanceContact</th>
+                    <th>Oxygen Bed</th>
+                    <th>Normal Bed</th>
+                    <th>Ventilator</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -54,10 +51,9 @@ const ViewHospitals = () => {
                     <tr key={hospital.hospid}>
                       <td className="visually-hidden">{hospital.hospid}</td>
                       <td>{hospital.hospitalname}</td>
-                      <td>{hospital.address}</td>
-                      <td>{hospital.email}</td>
-                      <td>{hospital.contact}</td>
-                      <td>{hospital.ambulancecontact}</td>
+                      <td>{hospital.oxygen}</td>
+                      <td>{hospital.normal}</td>
+                      <td>{hospital.ventilator}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -65,10 +61,10 @@ const ViewHospitals = () => {
             </div>
           )}
         </div>
-        <br /> <br /> <br /> <br />
-        <br /> <br /> 
-       
+        <br /><br /><br /><br />
+        <br /><br /><br /><br />
       </>
   )
-                  }
-export default ViewHospitals
+}
+
+export default AdminAllHospitalBedComponent

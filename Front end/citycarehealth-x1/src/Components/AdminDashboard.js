@@ -88,7 +88,60 @@ const AdminDashboard = (props) => {
         </div>
       </div>
     </div>
+    <div className="row py justify-content-center">
+      <div className="col-sm-3">
+        <div
+          className="card"
+          style={{ backgroundColor: "rgba(255,255,255,0.9)" }}
+        >
+          <div className="card-body">
+            <h5 className="card-title">View Bed available </h5>
+            <p className="card-text">
+            View bed available of all registered hospital.
+            </p>
+            <Link to='/allhospitalbed'>
+            <button className="btn btn-danger">
+            View Bed
+            </button></Link>
+          </div>
+        </div>
+      </div>
+      <div className="col-sm-3">
+        <div
+          className="card"
+          style={{ backgroundColor: "rgba(255,255,255,0.9)"}}
+        >
+          <div className="card-body">
+            <h5 className="card-title">View Blood Avilble</h5>
+            <p className="card-text">
+            View blood available of all registered hospital.
+            </p>
+            <Link to='/allhospitalblood'>
+            <button  className="btn btn-warning">
+            View Blood
+            </button></Link>
+          </div>
+        </div>
+      </div>
+      <div className="col-sm-3">
+        <div
+          className="card"
+          style={{ backgroundColor: "rgba(255,255,255,0.9)" }}
+        >
+          <div className="card-body">
+            <h5 className="card-title">View oxygen available</h5>
+            <p className="card-text">View oxygen available of all registered hospital.</p>
+            <Link to='/allhospitaloxygen'>
+            <button className="btn btn-danger">
+              VIEW
+            </button></Link>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
+
   )
 }
 

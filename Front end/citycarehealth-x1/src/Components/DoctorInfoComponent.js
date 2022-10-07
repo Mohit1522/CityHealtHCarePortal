@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import AdminServiceApi from '../Services/AdminServiceApi';
 import UserServiceApi from '../Services/UserServiceApi';
 
 const DoctorInfoComponent = () => {
@@ -9,9 +11,10 @@ const DoctorInfoComponent = () => {
         doctors: [],
         message: null,
       });
-
-      const searchVl=useRef();
-      const hospitalnameVr=useRef();
+      const [state1,setState1] = useState({
+        hospitals: [],
+        message: null,
+    });
   
     const search = (e) => {
       if (hospitalname === "") {
@@ -34,19 +37,16 @@ const DoctorInfoComponent = () => {
         console.log(response.data);
       });
     };
-  
-    const validateinput=()=> {
-      const hospname = hospitalnameVr.current.value;
-      if (hospname === "") {
-        searchVl.current.innerHTML =
-          "Please Enter Hospital Name";
-        return true;
-      }
-    }
-    const removeWarnings=()=> {
-      searchVl.current.innerHTML = "";
-    }
-
+    useEffect(()=>{
+      AdminServiceApi.fetchAllHospitals().then((resp) => {
+          setState1({
+            hospitals: resp.data,
+            message: "Hospitals list rendered successfully",
+      });
+  }).catch(error=>{
+    console.log(error);
+      })
+   },[])
   return (
     <>
     <div className="container my-4">
@@ -67,19 +67,20 @@ const DoctorInfoComponent = () => {
             Hospital Name
           </label>
           <div className="col-5">
-            <input
-              type="text"
-              id="hospitalname"
-              ref={hospitalnameVr}
-              className="form-control"
-              placeholder="Hospital name"
+          <select
+              id="bedtype"
+              className="form-select"
               name="hospitalname"
               value={hospitalname}
               onChange={(e)=>seHospitalname(e.target.value)}
-              onBlur={validateinput}
-              onFocus={removeWarnings}
               required
-            />
+            >
+
+                <option value="">select the hospital</option>
+                {state1.hospitals.map((hospital) => (
+                      <option value={hospital.hospitalname}>{hospital.hospitalname}</option>
+                  ))}
+            </select>
             <span style={{ color: "red" }} id="searchVl"></span>
           </div>
         </div>

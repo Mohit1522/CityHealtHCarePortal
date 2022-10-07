@@ -7,7 +7,7 @@ const LoginComponents = (props) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("Invalid user Id or password");
+  const [message, setMessage] = useState("Invalid Cardentials or if you are new user first signUp then proceed");
 
   const emailVR = useRef();
 

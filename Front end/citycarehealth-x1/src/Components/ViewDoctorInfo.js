@@ -23,6 +23,8 @@ const ViewDoctorInfo = () => {
       });
   }, []);
 
+
+
   return (
     <>
       <div className="container my-4">
@@ -60,6 +62,8 @@ const ViewDoctorInfo = () => {
           </table>
         </form>
       </div>
+      <br /><br /><br /><br />
+      <br /><br /><br /><br />
     </>
   );
 };

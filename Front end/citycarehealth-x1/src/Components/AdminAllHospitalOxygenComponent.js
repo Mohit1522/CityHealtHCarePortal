@@ -57,6 +57,8 @@ const AdminAllHospitalOxygenComponent = () => {
         </div>
       )}
     </div>
+    <br /><br /><br /><br />
+    <br /><br /><br /><br />
   </>
   )
 }

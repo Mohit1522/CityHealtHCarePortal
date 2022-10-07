@@ -12,7 +12,7 @@ const AddHospital = (props) => {
     const[ambulancecontact,setAbulanceContactNumber]=useState('');
     const navigate=useNavigate();
 
-    const[message,setMessage]=useState("");
+    const[message,setMessage]=useState("Hospital added successfully.");
     const nameVr=useRef();
     const nameVr2=useRef();
     const emailVr=useRef();
@@ -165,7 +165,6 @@ const addHospital = (h) => {
     };
     AdminServiceApi.addHospital(hospital)
       .then((res) => {
-        console.log(res.data);
         setMessage("Hospital added successfully.");
         console.log(message);
         Swal.fire({
@@ -240,6 +239,7 @@ const addHospital = (h) => {
               <label htmlFor="password" className="col-2 col-form-label">
                 Password
               </label>
+              
               <div className="col-5">
                 <input
                   type="password"

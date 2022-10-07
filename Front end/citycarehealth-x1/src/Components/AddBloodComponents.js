@@ -12,7 +12,7 @@ const AddBloodComponents = () => {
   const [ab_neg, setab_neg] = useState(null);
   const [o_pos, seto_pos] = useState(null);
   const [o_neg, seto_neg] = useState(null);
-  const [message, setMessage] = useState(null);
+  const [message, setMessage] = useState("Blood Added Succesfully");
   const [i, setI] = useState(null);
   const navigate=useNavigate();
 
@@ -92,6 +92,7 @@ const AddBloodComponents = () => {
                 required
               />
             </div>
+            units
           </div>
           <div className="form-group row my-3 justify-content-center">
             <label htmlFor="a_neg" className="col-2 col-form-label">
@@ -109,6 +110,7 @@ const AddBloodComponents = () => {
                 required
               />
             </div>
+            units
           </div>
           <div className="form-group row my-3 justify-content-center">
             <label htmlFor="b_pos" className="col-2 col-form-label">
@@ -126,6 +128,7 @@ const AddBloodComponents = () => {
                 required
               />
             </div>
+            units
           </div>
           <div className="form-group row my-3 justify-content-center">
             <label htmlFor="b_neg" className="col-2 col-form-label">
@@ -143,6 +146,7 @@ const AddBloodComponents = () => {
                 required
               />
             </div>
+            units
           </div>
           <div className="form-group row my-3 justify-content-center">
             <label htmlFor="ab_pos" className="col-2 col-form-label">
@@ -160,6 +164,7 @@ const AddBloodComponents = () => {
                 required
               />
             </div>
+            units
           </div>
           <div className="form-group row my-3 justify-content-center">
             <label htmlFor="ab_neg" className="col-2 col-form-label">
@@ -177,6 +182,7 @@ const AddBloodComponents = () => {
                 required
               />
             </div>
+            units
           </div>
           <div className="form-group row my-3 justify-content-center">
             <label htmlFor="o_pos" className="col-2 col-form-label">
@@ -194,6 +200,7 @@ const AddBloodComponents = () => {
                 required
               />
             </div>
+            units
           </div>
           <div className="form-group row my-3 justify-content-center">
             <label htmlFor="o_neg" className="col-2 col-form-label">
@@ -211,6 +218,7 @@ const AddBloodComponents = () => {
                 required
               />
             </div>
+            units
           </div>
           <div className="form-group row justify-content-center">
             <div className="offset-9">

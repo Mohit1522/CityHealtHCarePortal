@@ -10,7 +10,7 @@ const UserSignUpComponents = () => {
         const[email ,setEmail] =useState("");
         const[password ,setPassword] =useState("");
         const[contact ,setConatct] =useState("");
-        const[message ,setMessage] =useState("");
+        const[message ,setMessage] =useState("successfully registered");
         const[gender ,setGender] =useState("");
         const[age ,setAge] =useState("");
         const[address ,setAddress] =useState("");
@@ -153,7 +153,7 @@ const UserSignUpComponents = () => {
         UserServiceApi.addUser(user)
           .then((res) => {
             console.log(res.data);
-            setMessage("User added successfully.");
+            setMessage("successfully registered");
             console.log(message);
             Swal.fire({
               title:message,

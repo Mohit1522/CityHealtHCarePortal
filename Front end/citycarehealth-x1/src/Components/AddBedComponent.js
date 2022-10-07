@@ -7,7 +7,7 @@ const AddBedComponent = () => {
   const [oxygen, setOxygen] = useState(null);
   const [normal, setNormal] = useState(null);
   const [ventilator, setVentilator] = useState(null);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("Bed added Successfully");
   const [i, setI] = useState(0);
   const navigate=useNavigate();
 
@@ -73,6 +73,7 @@ const AddBedComponent = () => {
                 required
               />
             </div>
+            Nos
           </div>
           <div className="form-group row my-3 justify-content-center">
             <label htmlFor="oxygen" className="col-2 col-form-label">
@@ -90,6 +91,7 @@ const AddBedComponent = () => {
                 required
               />
             </div>
+            Nos
           </div>
           <div className="form-group row my-3 justify-content-center">
             <label htmlFor="normal" className="col-2 col-form-label">
@@ -107,6 +109,7 @@ const AddBedComponent = () => {
                 required
               />
             </div>
+            Nos
           </div>
           <div className="form-group row justify-content-center">
             <div className="offset-9">

@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import AdminServiceApi from '../Services/AdminServiceApi';
 import HospitalServiceApi from '../Services/HospitalServiceApi';
 
 const UserBloodAvblCompo = () => {
@@ -16,9 +18,10 @@ const UserBloodAvblCompo = () => {
         o_neg: "",
         message: null,
       });
-
-      const searchVl=useRef();
-    const hospitalnameVr=useRef();
+      const [state1,setState1] = useState({
+        hospitals: [],
+        message: null,
+    });
   
     const search = (e) => {
       if (hospitalname === "") {
@@ -50,18 +53,16 @@ const UserBloodAvblCompo = () => {
         }
       );
     };
-  
-    const validateinput=()=> {
-      const hospname = hospitalnameVr.current.value;
-      if (hospname === "") {
-        searchVl.current.innerHTML =
-          "Please Enter Hospital Name";
-        return true;
-      }
-    }
-    const removeWarnings=()=> {
-      searchVl.current.innerHTML = "";
-    }
+    useEffect(()=>{
+      AdminServiceApi.fetchAllHospitals().then((resp) => {
+          setState1({
+            hospitals: resp.data,
+            message: "Hospitals list rendered successfully",
+      });
+  }).catch(error=>{
+    console.log(error);
+      })
+   },[])
   
   return (
     <>
@@ -83,20 +84,20 @@ const UserBloodAvblCompo = () => {
             Hospital Name
           </label>
           <div className="col-5">
-            <input
-              type="text"
-              id="hospitalname"
-              ref={hospitalnameVr}
-              className="form-control"
-              placeholder="Hospital name"
+            <select
+              id="bedtype"
+              className="form-select"
               name="hospitalname"
               value={hospitalname}
               onChange={(e)=>setHospitalname(e.target.value)}
-              onBlur={validateinput}
-              onFocus={removeWarnings}
               required
-            />
-            <span style={{ color: "red" }} id="searchVl" ref={searchVl}></span>
+            >
+
+                <option value="">select the hospital</option>
+                {state1.hospitals.map((hospital) => (
+                      <option value={hospital.hospitalname}>{hospital.hospitalname}</option>
+                  ))}
+            </select>
           </div>
         </div>
         <button
@@ -139,6 +140,7 @@ const UserBloodAvblCompo = () => {
         </table>
       </div>
     </div>
+    <br /><br /><br /><br />
   </>
   )
 }

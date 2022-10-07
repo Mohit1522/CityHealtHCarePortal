@@ -5,7 +5,7 @@ import HospitalServiceApi from "../Services/HospitalServiceApi";
 
 const AddOxygenComponents = () => {
   const [oxygenavailable, setOxygenAvailable] = useState(null);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("Added Succesfully");
   const [i, setI] = useState(0); 
   const navigate=useNavigate();
 
@@ -68,6 +68,7 @@ const AddOxygenComponents = () => {
                 required
               />
             </div>
+            Ltrs
           </div>
           <div className="form-group row justify-content-center">
             <div className="offset-9">

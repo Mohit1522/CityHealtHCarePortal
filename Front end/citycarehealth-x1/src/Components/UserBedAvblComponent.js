@@ -11,9 +11,11 @@ const UserBedAvblComponent = () => {
   const [ventilator, setVentilator] = useState(null);
   const [oxygen, setOxygen] = useState(null);
   const [normal, setNormal] = useState(null);
+  const [message, setMessage] = useState("Please select the Hospital Name");
+  const [id, setId] = useState(0);
   const [state,setState] = useState({
     hospitals: [],
-    message: null,
+    message1: null,
 });
   const navigate=useNavigate();
   const searchVl = useRef();
@@ -25,11 +27,13 @@ const UserBedAvblComponent = () => {
         text: "Please select the Hospital",
         icon: "warning",
         confirmButtonText: "Ok",
+
       });
     }
     e.preventDefault();
 
     HospitalServiceApi.getByHospname(hospitalname).then((response) => {
+      console.log(hospitalname);
       const hospital = response.data;
       setHospid(hospital.hospid);
       setVentilator(hospital.ventilator);
@@ -62,7 +66,7 @@ const UserBedAvblComponent = () => {
           message: "Hospitals list rendered successfully",
     });
 }).catch(error=>{
-     console.log(state.message);
+     console.log(state.message1);
     })
  },[])
 

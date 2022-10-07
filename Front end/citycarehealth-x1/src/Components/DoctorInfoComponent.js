@@ -15,9 +15,6 @@ const DoctorInfoComponent = () => {
         hospitals: [],
         message: null,
     });
-
-      const searchVl=useRef();
-      const hospitalnameVr=useRef();
   
     const search = (e) => {
       if (hospitalname === "") {

@@ -58,10 +58,9 @@ const ViewRequestComponent = () => {
           </table>
         </div>
       </div>
-      <br /><br /><br /><br />
-      <br /><br /><br /><br />
     </>
   );
 };
 
 export default ViewRequestComponent;
+
